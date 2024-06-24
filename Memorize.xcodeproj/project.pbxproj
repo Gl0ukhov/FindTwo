@@ -23,8 +23,8 @@
 		80AF36CE2C1AF9AC00EF21FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80AF36D12C1AF9AC00EF21FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		80AF36DA2C20494E00EF21FB /* MemoryGame - Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemoryGame - Model.swift"; sourceTree = "<group>"; };
-		80AF36DC2C20504300EF21FB /* EmojiMemoryGame - ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmojiMemoryGame - ViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		80FEF5C12C29C677004F0029 /* Theme - model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme - model.swift"; sourceTree = SOURCE_ROOT; };
+		80AF36DC2C20504300EF21FB /* EmojiMemoryGame - ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EmojiMemoryGame - ViewModel.swift"; path = "Memorize/EmojiMemoryGame - ViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		80FEF5C12C29C677004F0029 /* Theme - model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Theme - model.swift"; path = "Memorize/Theme - model.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
