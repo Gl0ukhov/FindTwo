@@ -14,6 +14,7 @@
 		80AF36DB2C20494E00EF21FB /* MemoryGame - Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF36DA2C20494E00EF21FB /* MemoryGame - Model.swift */; };
 		80AF36DD2C20504300EF21FB /* EmojiMemoryGame - ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF36DC2C20504300EF21FB /* EmojiMemoryGame - ViewModel.swift */; };
 		80FEF5C22C29C677004F0029 /* Theme - model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FEF5C12C29C677004F0029 /* Theme - model.swift */; };
+		80FEF5C42C2B2B28004F0029 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FEF5C32C2B2B28004F0029 /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		80AF36DA2C20494E00EF21FB /* MemoryGame - Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemoryGame - Model.swift"; sourceTree = "<group>"; };
 		80AF36DC2C20504300EF21FB /* EmojiMemoryGame - ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "EmojiMemoryGame - ViewModel.swift"; path = "Memorize/EmojiMemoryGame - ViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		80FEF5C12C29C677004F0029 /* Theme - model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Theme - model.swift"; path = "Memorize/Theme - model.swift"; sourceTree = SOURCE_ROOT; };
+		80FEF5C32C2B2B28004F0029 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				80FEF5C12C29C677004F0029 /* Theme - model.swift */,
 				80AF36CA2C1AF9AB00EF21FB /* MemorizeApp.swift */,
 				80AF36CC2C1AF9AB00EF21FB /* EmojiMemoryGameView - View.swift */,
+				80FEF5C32C2B2B28004F0029 /* AspectVGrid.swift */,
 				80AF36CE2C1AF9AC00EF21FB /* Assets.xcassets */,
 				80AF36D02C1AF9AC00EF21FB /* Preview Content */,
 			);
@@ -148,6 +151,7 @@
 			files = (
 				80AF36DD2C20504300EF21FB /* EmojiMemoryGame - ViewModel.swift in Sources */,
 				80FEF5C22C29C677004F0029 /* Theme - model.swift in Sources */,
+				80FEF5C42C2B2B28004F0029 /* AspectVGrid.swift in Sources */,
 				80AF36CD2C1AF9AB00EF21FB /* EmojiMemoryGameView - View.swift in Sources */,
 				80AF36DB2C20494E00EF21FB /* MemoryGame - Model.swift in Sources */,
 				80AF36CB2C1AF9AB00EF21FB /* MemorizeApp.swift in Sources */,
