@@ -19,8 +19,6 @@ struct EmojiMemoryGameView: View {
                 theme
                 cards
                     .animation(.linear, value: viewModel.cards)
-                
-                    .scrollIndicators(.hidden)
                 score
                     .animation(.default, value: viewModel.score)
             }
