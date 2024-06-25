@@ -21,7 +21,7 @@ class EmojiMemoryGame {
     private static func createMemoryGame(_ t: Theme) -> MemoryGame<String> {
         let emojis = t.emojiSet.shuffled()
         let noOfPairs = Int.random(in: 4...t.numberOfEmojisAvailable)
-        return MemoryGame(numberOfPairsCards:noOfPairs) { index in
+        return MemoryGame(numberOfPairsCards: noOfPairs) { index in
             if emojis.indices.contains(index) {
                 emojis[index]
             } else {
