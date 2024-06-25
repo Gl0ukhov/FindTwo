@@ -42,19 +42,19 @@ struct EmojiMemoryGameView: View {
     }
     
     
-    var heading: some View {
+    private var heading: some View {
         Text("Memorize")
             .font(.title)
             .foregroundStyle(viewModel.themeColor)
     }
     
-    var theme: some View {
+    private var theme: some View {
         Text("Theme is \(EmojiMemoryGame.theme.topicName)")
             .font(.callout)
             .foregroundStyle(viewModel.themeColor)
     }
     
-    var score: some View {
+    private var score: some View {
         Text("Your score: \(viewModel.score)")
             .font(.title2)
             .padding()
