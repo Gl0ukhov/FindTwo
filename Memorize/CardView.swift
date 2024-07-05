@@ -20,15 +20,18 @@ struct CardView: View {
         ZStack {
             let base = RoundedRectangle(cornerRadius: Constants.cornerRadius)
             Group {
-                base
-                    .foregroundStyle(.white)
-                base
-                    .strokeBorder(lineWidth: Constants.lineWidth)
-                Text(card.content)
-                    .font(.system(size: Constants.FontSize.largest))
-                    .minimumScaleFactor(Constants.FontSize.scaleFactor)
-                    .multilineTextAlignment(.center)
-                    .aspectRatio(1, contentMode: .fit)
+                base.foregroundStyle(.white)
+                base.strokeBorder(lineWidth: Constants.lineWidth)
+                Pie(endAngle: .degrees(90))
+                    .opacity(Constants.Pie.opacity)
+                    .overlay(
+                        Text(card.content)
+                            .font(.system(size: Constants.FontSize.largest))
+                            .minimumScaleFactor(Constants.FontSize.scaleFactor)
+                            .multilineTextAlignment(.center)
+                            .aspectRatio(1, contentMode: .fit)
+                            .padding(Constants.Pie.inset)
+                    )
                     .padding(Constants.insent)
             }
             .opacity(card.isFaceUp ? 1:0)
@@ -48,6 +51,10 @@ struct CardView: View {
             static let smallest: CGFloat = 10
             static let scaleFactor = smallest / largest
         }
+        struct Pie {
+            static let opacity: CGFloat = 0.5
+            static let inset: CGFloat = 15
+        }
     }
 }
 
@@ -62,7 +69,7 @@ struct CardView: View {
             CardView(MemoryGame<String>.Card(isMatch: true, content: "X", id: "test1"))
         }
     }
-        .padding()
-        .foregroundStyle(.green)
+    .padding()
+    .foregroundStyle(.green)
     
 }

@@ -62,7 +62,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             "\(id): \(content) \(isFaceUp ? "up" : "down") \(isMatch ? "matched" : "no")"
         }
         
-        var isFaceUp = false
+        var isFaceUp = true
+        // Поправить на false
         var isMatch = false
         var viewed = false
         let content: CardContent
