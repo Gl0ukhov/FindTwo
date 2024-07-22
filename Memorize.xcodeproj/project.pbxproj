@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8031F3C52C4D0F5400D48F53 /* FlyingNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031F3C42C4D0F5400D48F53 /* FlyingNumber.swift */; };
 		80734BB62C3811BB001C1B84 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734BB52C3811BB001C1B84 /* CardView.swift */; };
 		80734BB82C382542001C1B84 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80734BB72C382542001C1B84 /* Pie.swift */; };
 		80AF36CB2C1AF9AB00EF21FB /* MemorizeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF36CA2C1AF9AB00EF21FB /* MemorizeApp.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8031F3C42C4D0F5400D48F53 /* FlyingNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlyingNumber.swift; sourceTree = SOURCE_ROOT; };
 		80734BB52C3811BB001C1B84 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		80734BB72C382542001C1B84 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = SOURCE_ROOT; };
 		80AF36C72C1AF9AB00EF21FB /* Memorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +70,7 @@
 				80AF36CC2C1AF9AB00EF21FB /* EmojiMemoryGameView - View.swift */,
 				80AF36DC2C20504300EF21FB /* EmojiMemoryGame - ViewModel.swift */,
 				80AF36DA2C20494E00EF21FB /* MemoryGame - Model.swift */,
+				8031F3C42C4D0F5400D48F53 /* FlyingNumber.swift */,
 				80FEF5C12C29C677004F0029 /* Theme - model.swift */,
 				80734BB52C3811BB001C1B84 /* CardView.swift */,
 				80DA05DF2C3BFD20002988C8 /* Cardify.swift */,
@@ -167,6 +170,7 @@
 				80AF36CD2C1AF9AB00EF21FB /* EmojiMemoryGameView - View.swift in Sources */,
 				80AF36DB2C20494E00EF21FB /* MemoryGame - Model.swift in Sources */,
 				80AF36CB2C1AF9AB00EF21FB /* MemorizeApp.swift in Sources */,
+				8031F3C52C4D0F5400D48F53 /* FlyingNumber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

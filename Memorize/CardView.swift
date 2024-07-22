@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+extension Animation {
+    static func spin(duration: TimeInterval) -> Animation {
+        .linear(duration: 1).repeatForever(autoreverses: false)
+    }
+}
+
 struct CardView: View {
     typealias Card = MemoryGame<String>.Card
     
@@ -26,6 +32,8 @@ struct CardView: View {
                     .multilineTextAlignment(.center)
                     .aspectRatio(1, contentMode: .fit)
                     .padding(Constants.Pie.inset)
+                    .rotationEffect(.degrees(card.isMatch ? 360 : 0))
+                    .animation(.spin(duration: 1), value: card.isMatch)
             )
             .padding(Constants.insent)
             .cardify(isFaceUp: card.isFaceUp)
@@ -46,6 +54,8 @@ struct CardView: View {
         }
     }
 }
+
+
 
 #Preview {
     VStack {

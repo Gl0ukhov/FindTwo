@@ -13,7 +13,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     
     init(numberOfPairsCards: Int, cardContentFactory: (Int) -> CardContent) {
         cards = []
-        // add numberOfPairsCards x 2 cards
         
         for pairIndex in 0..<max(2, numberOfPairsCards) {
             let content = cardContentFactory(pairIndex)
@@ -62,8 +61,13 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             "\(id): \(content) \(isFaceUp ? "up" : "down") \(isMatch ? "matched" : "no")"
         }
         
-        var isFaceUp = true
-        // Поправить на false
+        var isFaceUp = false {
+            didSet {
+                if oldValue && !isFaceUp {
+                    viewed = true
+                }
+            }
+        }
         var isMatch = false
         var viewed = false
         let content: CardContent

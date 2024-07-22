@@ -24,7 +24,7 @@ class EmojiMemoryGame {
         let emojis = t.emojiSet.shuffled()
         let noOfPairs = Int.random(in: 4...t.numberOfEmojisAvailable)
         return MemoryGame(numberOfPairsCards: 2) { index in
-            // Поправить на noOfPairs
+          //
             if emojis.indices.contains(index) {
                 emojis[index]
             } else {
