@@ -41,7 +41,7 @@ struct EmojiMemoryGameView: View {
                 } 
             }
         }
-        .onAppear(perform: viewModel.shuffle)
+//        .onAppear(perform: viewModel.shuffle)
     }
     
     
@@ -69,16 +69,23 @@ struct EmojiMemoryGameView: View {
             CardView(card)
                 .padding(spacing)
                 .overlay(FlyingNumber(number: scoreChange(causedBy: card)))
+                .zIndex(scoreChange(causedBy: card) != 0 ? 1 : 0)
                 .onTapGesture {
                     withAnimation {
+                        let scoreBeforeChoosing = viewModel.score
                         viewModel.choose(card)
+                        let scoreChange = viewModel.score - scoreBeforeChoosing
+                        lastScoreChange = (scoreChange, causedByCardID: card.id)
                     }
                 }
         }
     }
+    
+    @State private var lastScoreChange = (0, causedByCardID: "")
   
     private func scoreChange(causedBy card: Card) -> Int {
-        return 0
+        let (amount, id) = lastScoreChange
+        return card.id == id ? amount : 0 
     }
 }
 

@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-extension Animation {
-    static func spin(duration: TimeInterval) -> Animation {
-        .linear(duration: 1).repeatForever(autoreverses: false)
-    }
-}
 
 struct CardView: View {
     typealias Card = MemoryGame<String>.Card
@@ -55,7 +50,11 @@ struct CardView: View {
     }
 }
 
-
+extension Animation {
+    static func spin(duration: TimeInterval) -> Animation {
+        .linear(duration: 1).repeatForever(autoreverses: false)
+    }
+}
 
 #Preview {
     VStack {
