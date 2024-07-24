@@ -49,8 +49,8 @@ struct CardView: View {
        
         static let insent: CGFloat = 5
         struct FontSize {
-            static let largest: CGFloat = 200
-            static let smallest: CGFloat = 30
+            static let largest: CGFloat = 50
+            static let smallest: CGFloat = 10
             static let scaleFactor = smallest / largest
         }
         struct Pie {

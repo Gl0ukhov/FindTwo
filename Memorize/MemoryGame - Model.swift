@@ -19,7 +19,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: UUID() ))
             cards.append(Card(content: content, id: UUID() ))
         }
-//        cards.shuffle()
+        cards.shuffle()
     }
     
     var indexOfTheOneAndOnlyFaceUpCard: Int? {

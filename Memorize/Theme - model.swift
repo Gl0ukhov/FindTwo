@@ -17,13 +17,13 @@ struct Theme {
 let themes = [
 Theme(
     topicName: "Animal",
-    emojiSet: ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼", "🐻‍❄️", "🐨", "🐮"],
-    numberOfEmojisAvailable: 11,
+    emojiSet: ["🐶", "🐭", "🐹", "🐰", "🦊", "🐮"],
+    numberOfEmojisAvailable: 6,
     colorOfCards: "Green"),
 Theme(
     topicName: "Halloween",
-    emojiSet: ["👻", "🎃", "😈", "🧟‍♂️", "🕷️", "🕸️", "👹", "💀", "😵‍💫", "☠️", "🧛‍♂️", "🪳"],
-    numberOfEmojisAvailable: 12,
+    emojiSet: ["👻", "🎃", "🧟‍♂️", "🕷️", "😵‍💫", "☠️", "🧛‍♂️"],
+    numberOfEmojisAvailable: 7,
     colorOfCards: "Black"),
 Theme(
     topicName: "Fish",
@@ -37,8 +37,8 @@ Theme(
     colorOfCards: "Purple"),
 Theme(
     topicName: "Food",
-    emojiSet: ["🍔", "🌭", "🌮", "🌯", "🥙", "🥗", "🥪", "🍕", "🍟"],
-    numberOfEmojisAvailable: 9,
+    emojiSet: ["🍔", "🌭", "🌮", "🌯", "🥙", "🥗", "🥪", "🍕"],
+    numberOfEmojisAvailable: 8,
     colorOfCards: "Orange"),
 Theme(
     topicName: "Sport",
