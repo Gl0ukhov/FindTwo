@@ -19,11 +19,6 @@ class EmojiMemoryGame {
         model = EmojiMemoryGame.createMemoryGame(EmojiMemoryGame.theme)
     }
     
-    deinit {
-        print("Close")
-    }
-
-    
     private static func createMemoryGame(_ t: Theme) -> MemoryGame<String> {
         let emojis = t.emojiSet.shuffled()
         let noOfPairs = Int.random(in: 4...t.numberOfEmojisAvailable)
@@ -57,7 +52,6 @@ class EmojiMemoryGame {
         }
     }
     
-    
     func newGame() {
         EmojiMemoryGame.theme = themes.randomElement()!
         model = EmojiMemoryGame.createMemoryGame(EmojiMemoryGame.theme)
@@ -70,8 +64,5 @@ class EmojiMemoryGame {
     func choose(_ card: Card) {
         model.choose(card)
     }
-    
-    
-    
-    
+
 }

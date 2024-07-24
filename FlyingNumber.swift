@@ -18,7 +18,7 @@ struct FlyingNumber: View {
                 .font(.largeTitle)
                 .foregroundStyle(number < 0 ? .red : .green)
                 .shadow(color: .black, radius: 1.5, x: 1, y: 1)
-                .offset(x: 0, y: offset)
+                .offset(y: offset)
                 .opacity(offset != 0 ? 0 : 1)
                 .onAppear {
                     withAnimation(.easeInOut(duration: 2)) {

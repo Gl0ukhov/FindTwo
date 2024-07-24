@@ -18,21 +18,31 @@ struct CardView: View {
     }
     
     var body: some View {
-        Pie(endAngle: .degrees(240))
-            .opacity(Constants.Pie.opacity)
-            .overlay(
-                Text(card.content)
-                    .font(.system(size: Constants.FontSize.largest))
-                    .minimumScaleFactor(Constants.FontSize.scaleFactor)
-                    .multilineTextAlignment(.center)
-                    .aspectRatio(1, contentMode: .fit)
-                    .padding(Constants.Pie.inset)
-                    .rotationEffect(.degrees(card.isMatch ? 360 : 0))
-                    .animation(.spin(duration: 1), value: card.isMatch)
-            )
-            .padding(Constants.insent)
-            .cardify(isFaceUp: card.isFaceUp)
-        .opacity(card.isFaceUp || !card.isMatch ? 1 : 0)
+        TimelineView(.animation) { timeline in
+            if card.isFaceUp || !card.isMatch {
+                Pie(endAngle: .degrees(card.bonusPercentRemaining * 360))
+                    .opacity(Constants.Pie.opacity)
+                    .overlay(
+                        cardContent
+                            .padding(Constants.Pie.inset)
+                    )
+                    .padding(Constants.insent)
+                    .cardify(isFaceUp: card.isFaceUp)
+                    .transition(.scale)
+            } else {
+                Color.clear
+            }
+        }
+    }
+    
+    var cardContent: some View {
+        Text(card.content)
+            .font(.system(size: Constants.FontSize.largest))
+            .minimumScaleFactor(Constants.FontSize.scaleFactor)
+            .multilineTextAlignment(.center)
+            .aspectRatio(1, contentMode: .fill)
+            .rotationEffect(.degrees(card.isMatch ? 360 : 0))
+            .animation(.spin(duration: 1), value: card.isMatch)
     }
     
     private struct Constants {
@@ -40,7 +50,7 @@ struct CardView: View {
         static let insent: CGFloat = 5
         struct FontSize {
             static let largest: CGFloat = 200
-            static let smallest: CGFloat = 10
+            static let smallest: CGFloat = 30
             static let scaleFactor = smallest / largest
         }
         struct Pie {
@@ -59,12 +69,12 @@ extension Animation {
 #Preview {
     VStack {
         HStack {
-            CardView(MemoryGame<String>.Card(isFaceUp: true, content: "X", id: "test2"))
-            CardView(MemoryGame<String>.Card(content: "X", id: "test1"))
+            CardView(MemoryGame<String>.Card(isFaceUp: true, content: "X", id: UUID()))
+            CardView(MemoryGame<String>.Card(content: "X", id: UUID()))
         }
         HStack {
-            CardView(MemoryGame<String>.Card(isFaceUp: true, content: "This is a very long string and I hope it fits", id: "test2"))
-            CardView(MemoryGame<String>.Card(isMatch: true, content: "X", id: "test1"))
+            CardView(MemoryGame<String>.Card(isFaceUp: true, content: "This is a very long string and I hope it fits", id: UUID()))
+            CardView(MemoryGame<String>.Card(isMatch: true, content: "X", id: UUID()))
         }
     }
     .padding()
