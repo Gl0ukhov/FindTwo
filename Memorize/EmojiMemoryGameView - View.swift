@@ -25,9 +25,6 @@ struct EmojiMemoryGameView: View {
     private var undealCards: [Card] {
         viewModel.cards.filter { !isDealt($0) }
     }
-    private func isDealt(_ card: Card) -> Bool {
-        dealt.contains(card.id)
-    }
     
     var body: some View {
         NavigationStack {
@@ -107,6 +104,10 @@ struct EmojiMemoryGameView: View {
         .onTapGesture {
             deal()
         }
+    }
+    
+    private func isDealt(_ card: Card) -> Bool {
+        dealt.contains(card.id)
     }
     
     private func deal() {
