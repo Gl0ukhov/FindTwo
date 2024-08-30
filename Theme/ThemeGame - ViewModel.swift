@@ -11,19 +11,11 @@ import SwiftUI
 class ThemeGame {
     var allTheme: [Theme] = Theme.emojiTheme
     
+    func addNewTheme(name: String, color: Theme.RGBA, emojis: [String]) {
+        allTheme.append(Theme(name: name, emojis: emojis, color: color))
+    }
+    
     
 }
 
-extension Theme {
-    var colorForView: Color {
-        switch color {
-        case "Green":  Color.green
-        case "Black": Color.black
-        case "Blue": Color.blue
-        case "Purple": Color.purple
-        case "Orange": Color.orange
-        case "Mint": Color.mint
-        default:  Color.black
-        }
-    }
-}
+
