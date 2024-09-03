@@ -14,8 +14,9 @@ class EmojiMemoryGame {
     
     private var model: MemoryGame<String>
     
-    init(emoji: [String]) {
-        model = EmojiMemoryGame.createMemoryGame(emoji: emoji)
+    init(emoji: String) {
+        
+        model = EmojiMemoryGame.createMemoryGame(emoji: Array(emoji.map { "\($0)"}))
     }
     
     private static func createMemoryGame(emoji: [String]) -> MemoryGame<String> {
@@ -38,20 +39,8 @@ class EmojiMemoryGame {
         model.score
     }
     
-//    var themeColor: Color {
-//        switch theme.color {
-//        case "Green":Color.green
-//        case "Black": Color.black
-//        case "Blue": Color.blue
-//        case "Purple": Color.purple
-//        case "Orange": Color.orange
-//        case "Mint": Color.mint
-//        default: Color.red
-//        }
-//    }
-    
-    func newGame(emoji: [String]) {
-        model = EmojiMemoryGame.createMemoryGame(emoji: emoji)
+    func newGame(emoji: String) {
+        model = EmojiMemoryGame.createMemoryGame(emoji:  Array(emoji.map { "\($0)"}))
     }
     
     func shuffle() {

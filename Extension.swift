@@ -26,6 +26,10 @@ extension String {
             }
         }
     }
+    
+    mutating func remove(_ emoji: Character) {
+        removeAll(where: { $0 == emoji })
+    }
 }
 
 extension Color {

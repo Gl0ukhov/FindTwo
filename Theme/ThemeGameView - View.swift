@@ -23,7 +23,7 @@ struct ThemeGameView: View {
                 List {
                     ForEach(themes.allTheme) { theme in
                         NavigationLink(value: theme) {
-                            OneCellTheme(name: theme.name, emoji: theme.emojis.joined(), color: Color(RGBA: theme.color), number: theme.emojis.count)
+                            OneCellTheme(name: theme.name, emoji: theme.emojis, color: Color(RGBA: theme.color), number: theme.emojis.count)
                                 .swipeActions(edge: .leading) {
                                     Button("Edit") {
                                         editTheme.toggle()
@@ -179,7 +179,7 @@ struct EditTheme: View {
             .navigationTitle("Add new theme")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Add") {
+                    Button("Save") {
                         dismiss()
                     }
                 }
@@ -191,16 +191,16 @@ struct EditTheme: View {
             }
         }
     }
-    
+    // MARK: Нельзя, чтобы эмодзи было меньше 4
     var removeEmoji: some View {
         VStack(alignment: .trailing) {
             Text("Tap to Remove Emojis").font(.caption).foregroundColor(.gray)
             LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
-                ForEach(theme.emojis, id: \.self) { emoji in
+                ForEach(theme.emojis.uniqued.map(String.init), id: \.self) { emoji in
                     Text(emoji)
                         .onTapGesture {
                             withAnimation {
-                                theme.emojis.remove(atOffsets: emoji.first! )
+                                theme.emojis.remove(emoji.first!)
                             }
                         }
                 }
