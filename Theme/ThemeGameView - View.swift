@@ -9,9 +9,13 @@ import SwiftUI
 
 struct ThemeGameView: View {
     
-    @Environment (ThemeGame.self) var themes
+    
+    @State private var themes = ThemeGame()
     
     @State private var addTheme = false
+    @State private var editTheme = false
+    
+    @State private var indexTheme = 0
     
     var body: some View {
         NavigationStack {
@@ -20,9 +24,18 @@ struct ThemeGameView: View {
                     ForEach(themes.allTheme) { theme in
                         NavigationLink(value: theme) {
                             OneCellTheme(name: theme.name, emoji: theme.emojis.joined(), color: Color(RGBA: theme.color), number: theme.emojis.count)
+                                .swipeActions(edge: .leading) {
+                                    Button("Edit") {
+                                        editTheme.toggle()
+                                        indexTheme = themes.index(UUID: theme.id)
+                                    }
+                                    .tint(.blue)
+                                }
                         }
                     }
-                    .onDelete(perform: <#T##Optional<(IndexSet) -> Void>##Optional<(IndexSet) -> Void>##(IndexSet) -> Void#>)
+                    .onDelete { indexSet in
+                        themes.allTheme.remove(atOffsets: indexSet)
+                    }
                 }
                 .navigationDestination(for: Theme.self) { theme in
                     EmojiMemoryGameView(choosingTheme: theme)
@@ -30,6 +43,10 @@ struct ThemeGameView: View {
             }
             .sheet(isPresented: $addTheme, content: {
                 AddTheme(theme: themes)
+                    .font(nil)
+            })
+            .sheet(isPresented: $editTheme, content: {
+                EditTheme(theme: $themes.allTheme[indexTheme])
                     .font(nil)
             })
             .navigationTitle("Choose a theme")
@@ -89,8 +106,6 @@ struct AddTheme: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add") {
                         theme.addNewTheme(name: name, color: Theme.RGBA(color: color), emojis: emoji)
-                        print(emoji)
-                        print(theme)
                         dismiss()
                     }
                     .disabled(disableAdd)
@@ -132,4 +147,65 @@ struct OneCellTheme: View {
     }
 }
 
+struct EditTheme: View {
 
+    @Binding var theme: Theme
+
+    @FocusState private var nameFocus: Bool
+    @Environment (\.dismiss) var dismiss
+    
+    @State private var emoji: String = ""
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section("Choose a name") {
+                    TextField("Name", text: $theme.name)
+                        .textInputAutocapitalization(.words)
+                        .autocorrectionDisabled()
+                        .focused($nameFocus)
+
+                }
+                Section("Add an emoji and choose a theme color") {
+                    TextField("Add emojis", text: $emoji)
+                    removeEmoji
+//                    ColorPicker("Color", selection: , supportsOpacity: true)
+
+                }
+            }
+            .onAppear {
+                nameFocus = true
+            }
+            .navigationTitle("Add new theme")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Add") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+            }
+        }
+    }
+    
+    var removeEmoji: some View {
+        VStack(alignment: .trailing) {
+            Text("Tap to Remove Emojis").font(.caption).foregroundColor(.gray)
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: 40))]) {
+                ForEach(theme.emojis, id: \.self) { emoji in
+                    Text(emoji)
+                        .onTapGesture {
+                            withAnimation {
+                                theme.emojis.remove(atOffsets: emoji.first! )
+                            }
+                        }
+                }
+            }
+            .font(Font.system(size: 40))
+        }
+    }
+}

@@ -8,9 +8,9 @@
 import Foundation
 
 struct Theme: Identifiable, Hashable {
-    let name: String
-    let emojis: [String]
-    let color: RGBA
+    var name: String
+    var emojis: [String]
+    var color: RGBA
     let id = UUID()
     
     

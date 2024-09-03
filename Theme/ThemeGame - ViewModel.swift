@@ -15,6 +15,10 @@ class ThemeGame {
         allTheme.append(Theme(name: name, emojis: Array(emojis).map { "\($0)" }, color: color))
     }
     
+    func index(UUID: UUID) -> Int {
+        allTheme.firstIndex { $0.id == UUID } ?? 0
+    }
+    
     
 }
 
