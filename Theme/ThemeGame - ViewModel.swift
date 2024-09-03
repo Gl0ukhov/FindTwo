@@ -11,8 +11,8 @@ import SwiftUI
 class ThemeGame {
     var allTheme: [Theme] = Theme.emojiTheme
     
-    func addNewTheme(name: String, color: Theme.RGBA, emojis: [String]) {
-        allTheme.append(Theme(name: name, emojis: emojis, color: color))
+    func addNewTheme(name: String, color: Theme.RGBA, emojis: String) {
+        allTheme.append(Theme(name: name, emojis: Array(emojis).map { "\($0)" }, color: color))
     }
     
     

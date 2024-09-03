@@ -33,3 +33,15 @@ extension Color {
         self.init(red: RGBA.red, green: RGBA.green, blue: RGBA.blue, opacity: RGBA.alpha)
     }
 }
+
+extension Theme.RGBA {
+    init(color: Color) {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        
+        UIColor(color).getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        self.init(red: red, green: green, blue: blue, alpha: alpha)
+    }
+}

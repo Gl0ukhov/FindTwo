@@ -16,15 +16,17 @@ struct ThemeGameView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                List(themes.allTheme) { theme in
-                    NavigationLink(value: theme) {
-                        OneCellTheme(name: theme.name, emoji: theme.emojis.joined(), color: Color(RGBA: theme.color), number: theme.emojis.count)
+                List {
+                    ForEach(themes.allTheme) { theme in
+                        NavigationLink(value: theme) {
+                            OneCellTheme(name: theme.name, emoji: theme.emojis.joined(), color: Color(RGBA: theme.color), number: theme.emojis.count)
+                        }
                     }
+                    .onDelete(perform: <#T##Optional<(IndexSet) -> Void>##Optional<(IndexSet) -> Void>##(IndexSet) -> Void#>)
                 }
                 .navigationDestination(for: Theme.self) { theme in
                     EmojiMemoryGameView(choosingTheme: theme)
                 }
-                
             }
             .sheet(isPresented: $addTheme, content: {
                 AddTheme(theme: themes)
@@ -49,7 +51,14 @@ struct AddTheme: View {
     
     @State private var name = ""
     @State private var emoji = ""
-    @State private var color: Color = .white
+    @State private var color: Color = .black
+    private var disableAdd: Bool {
+        if  emoji.count > 3 {
+            return false
+        } else {
+            return true
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -59,16 +68,17 @@ struct AddTheme: View {
                         .textInputAutocapitalization(.words)
                         .autocorrectionDisabled()
                         .focused($nameFocus)
-                        
+                    
                 }
                 Section("Add an emoji and choose a theme color") {
-                    TextField("", text: $emoji)
+                    TextField("Add at least 4 emojis", text: $emoji)
                         .onChange(of: emoji, { oldValue, newValue in
                             emoji = (newValue + emoji)
                                 .filter { $0.isEmoji }
                                 .uniqued
                         })
-                    ColorPicker("\(color.description.localizedCapitalized)", selection: $color)
+                    ColorPicker("Color", selection: $color,supportsOpacity: true)
+                    
                 }
             }
             .onAppear {
@@ -78,8 +88,12 @@ struct AddTheme: View {
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add") {
-                        theme.addNewTheme(name: name, color: color, emojis: emoji)
+                        theme.addNewTheme(name: name, color: Theme.RGBA(color: color), emojis: emoji)
+                        print(emoji)
+                        print(theme)
+                        dismiss()
                     }
+                    .disabled(disableAdd)
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") {
