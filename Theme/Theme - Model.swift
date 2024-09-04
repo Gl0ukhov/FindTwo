@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct Theme: Identifiable, Hashable {
+struct Theme: Identifiable, Hashable, Codable {
     var name: String
     var emojis: String
     var color: RGBA
-    let id = UUID()
+    var numberCard = 4
+    private(set) var id = UUID()
     
     
     static var emojiTheme = [

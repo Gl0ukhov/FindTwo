@@ -12,8 +12,8 @@ struct EmojiMemoryGameView: View {
     var viewModel: EmojiMemoryGame
     var choosingTheme: Theme
     
-    init(choosingTheme: Theme) {
-        self.viewModel = EmojiMemoryGame(emoji: choosingTheme.emojis)
+    init(choosingTheme: Theme, number: Int) {
+        self.viewModel = EmojiMemoryGame(emoji: choosingTheme.emojis, numberOfCard: number)
         self.choosingTheme = choosingTheme
     }
     
@@ -36,7 +36,7 @@ struct EmojiMemoryGameView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     withAnimation(.easeInOut(duration: 0.7)) {
-                        viewModel.newGame(emoji: choosingTheme.emojis)
+                        viewModel.newGame(emoji: choosingTheme.emojis, numberOfCard: choosingTheme.numberCard)
                     }
                 } label: {
                     Text("New game")

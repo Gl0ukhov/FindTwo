@@ -14,13 +14,13 @@ class EmojiMemoryGame {
     
     private var model: MemoryGame<String>
     
-    init(emoji: String) {
+    init(emoji: String, numberOfCard: Int) {
         
-        model = EmojiMemoryGame.createMemoryGame(emoji: Array(emoji.map { "\($0)"}))
+        model = EmojiMemoryGame.createMemoryGame(emoji: Array(emoji.map { "\($0)"}), number: numberOfCard)
     }
     
-    private static func createMemoryGame(emoji: [String]) -> MemoryGame<String> {
-        let noOfPairs = Int.random(in: 4...emoji.count)
+    private static func createMemoryGame(emoji: [String], number: Int) -> MemoryGame<String> {
+        let noOfPairs = Int.random(in: 4...number)
         return MemoryGame(numberOfPairsCards: noOfPairs) { index in
             if emoji.indices.contains(index) {
                 emoji[index]
@@ -39,8 +39,8 @@ class EmojiMemoryGame {
         model.score
     }
     
-    func newGame(emoji: String) {
-        model = EmojiMemoryGame.createMemoryGame(emoji:  Array(emoji.map { "\($0)"}))
+    func newGame(emoji: String, numberOfCard: Int) {
+        model = EmojiMemoryGame.createMemoryGame(emoji:  Array(emoji.map { "\($0)"}), number: numberOfCard)
     }
     
     func shuffle() {
