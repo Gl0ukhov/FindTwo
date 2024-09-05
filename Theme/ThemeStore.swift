@@ -8,7 +8,7 @@
 import SwiftUI
 
 @Observable
-class ThemeGame {
+class ThemeStore {
     var allTheme: [Theme] {
         didSet {
             autosave()
@@ -18,10 +18,10 @@ class ThemeGame {
     private let url = URL.documentsDirectory.appending(path: "autosave.json")
     
     private func autosave() {
-        save()
+        save(url: url)
     }
     
-    private func save() {
+    private func save(url: URL) {
         do {
             let data = try JSONEncoder().encode(allTheme)
             try data.write(to: url)
@@ -40,8 +40,8 @@ class ThemeGame {
         allTheme = Theme.emojiTheme
     }
     
-    func addNewTheme(name: String, color: Theme.RGBA, emojis: String) {
-        allTheme.append(Theme(name: name, emojis: emojis, color: color))
+    func addNewTheme(name: String, color: Theme.RGBA, emojis: String, numberCard: Int) {
+        allTheme.append(Theme(name: name, emojis: emojis, color: color, numberCard: numberCard))
     }
     
     func index(UUID: UUID) -> Int {
